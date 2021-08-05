@@ -1,0 +1,12 @@
+Haircut
+MilitaryParade
+MoppingFloor
+Nunchucks
+PizzaTossing
+PlayingCello
+PlayingDhol
+PlayingTabla
+PlayingViolin
+SalsaSpin
+SoccerJuggling
+SoccerPenalty
