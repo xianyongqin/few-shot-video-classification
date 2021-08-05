@@ -1,0 +1,215 @@
+# UCF101, TSL, 1shot 5-way, few-shot video classification
+CUDA_VISIBLE_DEVICES=1 python tsl_fsv.py --test_video_path /scratch/BS/pool1/yxian/data/ucf101/video_jpeg/ \
+--manual_seed 10 \
+--test_list_path /scratch/BS/pool1/yxian/data/ucf101/data_splits/meta_test.txt \
+--dataset ucf101 \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/tmp/  \
+--shot 1 \
+--test_way 5 \
+--query 15 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finene_metatrain_ucf101/save_11.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+# Kinetics, TSL, 1shot 5-way, few-shot video classification
+CUDA_VISIBLE_DEVICES=2 python tsl_fsv.py --test_video_path /BS/YFCC100M/nobackup/kinetics100/video_jpeg/test/ \
+--manual_seed 10 \
+--test_list_path /BS/YFCC100M/nobackup/kinetics100/data_splits/test.list \
+--dataset kinetics100 \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/tmp \
+--shot 1 \
+--test_way 5 \
+--query 5 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finene_metatrain/save_1.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+# SomethingV2, TSL, 1shot 5-way, few-shot video classification
+CUDA_VISIBLE_DEVICES=0 python tsl_fsv.py --test_video_path /scratch/BS/pool2/yxian/data/something/video_jpeg/test/ \
+--manual_seed 10 \
+--test_list_path /BS/YFCC100M/nobackup/something2something/data_splits/meta_test.txt \
+--dataset something \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/fsv/release/results/tsl_fsv_1s5w \
+--shot 1 \
+--test_way 5 \
+--query 15 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finetune_r25d34_sports1m_something_metatrain_tmp/save_3.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+
+# Kinetics, TSL, 1shot 5-way, generalized few-shot video classification
+CUDA_VISIBLE_DEVICES=1 python tsl_gfsv.py --test_novel_video_path /BS/YFCC100M/nobackup/kinetics100/video_jpeg/test/ \
+--test_base_video_path /BS/YFCC100M/nobackup/kinetics100/video_jpeg/test_base/ \
+--manual_seed 10 \
+--test_novel_list_path /BS/YFCC100M/nobackup/kinetics100/data_splits/test.list \
+--test_base_list_path /BS/YFCC100M/nobackup/kinetics100/data_splits/test_base_videos.list \
+--dataset kinetics100 \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/tmp  \
+--shot 1 \
+--test_novel_way 5 \
+--test_base_way 64 \
+--query_novel 5 \
+--query_base 5 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finene_metatrain/r25d/r25d34_kinetics100_save_1.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+# UCF101, TSL, 1shot 5-way, generalized few-shot video classification
+CUDA_VISIBLE_DEVICES=0 python tsl_gfsv.py --test_novel_video_path /scratch/BS/pool1/yxian/data/ucf101/video_jpeg/ \
+--test_base_video_path /scratch/BS/pool1/yxian/data/ucf101/video_jpeg/ \
+--manual_seed 10 \
+--test_novel_list_path /scratch/BS/pool1/yxian/data/ucf101/data_splits/meta_test.txt \
+--test_base_list_path /scratch/BS/pool1/yxian/data/ucf101/data_splits/test_base_videos.txt \
+--dataset ucf101 \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/tmp  \
+--shot 1 \
+--test_novel_way 5 \
+--test_base_way 64 \
+--query_novel 5 \
+--query_base 5 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finene_metatrain_ucf101/save_11.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+# SomethingV2, TSL, 1shot 5-way, generalized few-shot video classification
+CUDA_VISIBLE_DEVICES=0 python tsl_gfsv.py --test_novel_video_path /scratch/BS/pool2/yxian/data/something/video_jpeg/test/ \
+--test_base_video_path /scratch/BS/pool2/yxian/data/something/video_jpeg/train_val/ \
+--manual_seed 10 \
+--test_novel_list_path /BS/xian18/work/fsv/release/data/somethingv2/data_splits/meta_test.txt \
+--test_base_list_path /BS/xian18/work/fsv/release/data/somethingv2/data_splits/test_base_videos.txt \
+--dataset something \
+--n_classes 64 \
+--train_crop random \
+--n_samples_for_each_video 10 \
+--n_val_samples 10 \
+--clip_model r2plus1d \
+--clip_model_depth 34 \
+--n_threads 16 \
+--result_path /BS/xian18/work/fsv/release/results/tsl_gfsv_1s5w  \
+--shot 1 \
+--test_novel_way 5 \
+--test_base_way 64 \
+--query_novel 5 \
+--query_base 5 \
+--resume_path /BS/xian18/work/fsv/finetune/checkpoint/finetune_r25d34_sports1m_something_metatrain_tmp/save_3.pth \
+--emb_dim 512 \
+--batch_size 64 \
+--lr 0.01 \
+--nepoch 10
+
+
+# finetune r2plus1d on kinetics100
+python finetune_metatrain.py --video_path /BS/YFCC100M/nobackup/kinetics100/video_jpeg/train \
+--train_list_path /BS/xian18/work/fsv/release/data//kinetics100/data_splits/meta_train.txt \
+--val_video_path /BS/YFCC100M/nobackup/kinetics100/video_jpeg/trainclasses_val/ \
+--val_list_path /BS/xian18/work/fsv/release/data//kinetics100/data_splits/trainclasses_val.list \
+--dataset kinetics \
+--n_classes 400 \
+--n_finetune_classes 64 \
+--pretrain_path /BS/xian18/work/fsv/release/data/models/r25d34_sports1m.pth \
+--model r2plus1d \
+--model_depth 34 \
+--batch_size 32 \
+--n_threads 16 \
+--checkpoint 1 \
+--val_every 1 \
+--train_crop random \
+--n_samples_for_each_video 8 \
+--n_val_samples 10 \
+--weight_decay 0.001 \
+--layer_lr 0.001 0.001 0.001 0.001 0.001 0.1 \
+--ft_begin_index 0 \
+--result_path /BS/xian18/work/fsv/release/results/finetune_kinetics
+
+# finetune r2plus1d on ucf101
+python finetune_metatrain.py --video_path /scratch/BS/pool1/yxian/data/ucf101/video_jpeg \
+--train_list_path /BS/xian18/work/fsv/release/data//ucf101/data_splits/meta_train.txt \
+--val_video_path /scratch/BS/pool1/yxian/data/ucf101/video_jpeg \
+--val_list_path /BS/xian18/work/fsv/release/data//ucf101/data_splits/meta_train_val.txt \
+--dataset ucf101 \
+--n_classes 400 \
+--n_finetune_classes 64 \
+--pretrain_path /BS/xian18/work/fsv/release/data/models/r25d34_sports1m.pth \
+--model r2plus1d \
+--model_depth 34 \
+--batch_size 32 \
+--n_threads 16 \
+--checkpoint 1 \
+--val_every 1 \
+--train_crop random \
+--n_samples_for_each_video 8 \
+--n_val_samples 10 \
+--weight_decay 0.001 \
+--layer_lr 0.001 0.001 0.001 0.001 0.001 0.01 \
+--ft_begin_index 0 \
+--result_path /BS/xian18/work/fsv/release/results/finetune_ucf101
+
+
+# finetune r2plus1d on something
+python finetune_metatrain.py --video_path /scratch/BS/pool2/yxian/data/something/video_jpeg/train/ \
+--train_list_path /BS/xian18/work/fsv/release/data//somethingv2/data_splits/meta_train.txt \
+--val_video_path /scratch/BS/pool2/yxian/data/something/video_jpeg/train_val/ \
+--val_list_path /BS/xian18/work/fsv/release/data//somethingv2/data_splits/meta_train_val.txt \
+--dataset something \
+--n_classes 400 \
+--n_finetune_classes 64 \
+--pretrain_path /BS/xian18/work/fsv/release/data/models/r25d34_sports1m.pth \
+--model r2plus1d \
+--model_depth 34 \
+--batch_size 32 \
+--n_threads 16 \
+--checkpoint 1 \
+--val_every 1 \
+--train_crop random \
+--n_samples_for_each_video 8 \
+--n_val_samples 10 \
+--weight_decay 0.001 \
+--layer_lr 0.001 0.001 0.001 0.001 0.001 0.1 \
+--ft_begin_index 0 \
+--result_path /BS/xian18/work/fsv/release/results/finetune_something
