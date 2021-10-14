@@ -1,4 +1,8 @@
-This is a repo covering the following paper.
+This is a repo covering the following papers.
+
+[**Generalized Few-Shot Video Classification with Video Retrieval and Feature Generation**<br/>](https://arxiv.org/pdf/2007.04755.pdf)
+Yongqin Xian, Bruno Korbar, Matthijs Douze, Lorenzo Torresani, Bernt Schiele, Zeynep Akata <br/>
+TPAMI 2021  
 
 [**Generalized Many-Way Few-Shot Video Classification**<br/>](https://arxiv.org/pdf/2007.04755.pdf)
 Yongqin Xian, Bruno Korbar, Matthijs Douze, Bernt Schiele, Zeynep Akata, 
